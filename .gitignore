@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 构建缓存
+content/articles/.build-cache.json
+# manifest 由 sync 生成，可提交便于对照
+# content/articles/manifest.json
+
+# 构建产物（可选：若 CI 生成则可忽略；v1 建议提交 docs 便于 Pages）
+# docs/
+
+# 简历 PDF 含隐私，不提交公开仓库
+content/source/resume.pdf
+content/source/resume_extracted.txt
+
+# OS
+.DS_Store
+Thumbs.db

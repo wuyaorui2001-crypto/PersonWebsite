@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}} · {{site_title}}</title>
+  <meta name="description" content="{{description}}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{base_url}}assets/styles/main.css">
+  {{extra_head}}
+</head>
+<body class="{{body_class}}">
+  <header class="site-header">
+    <a class="site-brand" href="{{base_url}}">{{owner_name}}</a>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="{{base_url}}" {{nav_home}}>首页</a>
+      <a href="{{base_url}}resume/" {{nav_resume}}>简历</a>
+      <a href="{{base_url}}articles/" {{nav_articles}}>文章</a>
+    </nav>
+  </header>
+  <main class="site-main">
+    {{content}}
+  </main>
+  <footer class="site-footer">
+    <p>© {{year}} {{owner_name}} · 由 Markdown 构建</p>
+  </footer>
+  {{extra_scripts}}
+</body>
+</html>

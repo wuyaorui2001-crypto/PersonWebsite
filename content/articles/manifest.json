@@ -1,0 +1,30 @@
+{
+  "synced_at": "2026-05-21T07:10:33.415956+00:00",
+  "source_dir": "D:\\Me&AI\\Project\\thoughts\\Article",
+  "articles": [
+    {
+      "slug": "ep-001-答案",
+      "ep": 1,
+      "title": "答案",
+      "display_title": "EP 001 | 答案",
+      "source_file": "EP 001 答案.md",
+      "content_path": "content/articles/ep-001-答案.md"
+    },
+    {
+      "slug": "ep-002-注意力",
+      "ep": 2,
+      "title": "注意力",
+      "display_title": "EP 002 | 注意力",
+      "source_file": "EP 002 注意力.md",
+      "content_path": "content/articles/ep-002-注意力.md"
+    },
+    {
+      "slug": "ep-003-生活",
+      "ep": 3,
+      "title": "生活",
+      "display_title": "EP 003 | 生活",
+      "source_file": "EP 003 生活.md",
+      "content_path": "content/articles/ep-003-生活.md"
+    }
+  ]
+}

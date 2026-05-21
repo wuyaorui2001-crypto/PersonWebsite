@@ -1,0 +1,40 @@
+# 板块注册表 — 新增板块在此配置，build.py 按此生成 docs/ 目录树
+
+site:
+  title: "个人站"
+  # 与 GitHub 仓库名一致；本地预览时 preview.py 会处理
+  base_url: "/PersonWebsite/"
+
+sections:
+  - id: home
+    path: ""
+    template: home
+    enabled: true
+
+  - id: resume
+    path: "resume"
+    template: resume
+    content: "content/resume.md"
+    i18n_split_markers:
+      zh: "<!-- RESUME_LANG:zh -->"
+      en: "<!-- RESUME_LANG:en -->"
+    i18n_toggle: true
+    i18n_button_position: "bottom-right"  # bottom-right | top-right | bottom-left
+    enabled: true
+
+  - id: articles
+    path: "articles"
+    template: article_list
+    content_dir: "content/articles"
+    detail_template: article_detail
+    pagination: 30
+    enabled: true
+
+  # 未来：工作复盘 — 启用时设 enabled: true 并添加 content/work-retrospective/*.md
+  - id: work-retrospective
+    path: "work-retrospective"
+    template: section_list
+    content_dir: "content/work-retrospective"
+    detail_template: section_detail
+    pagination: 20
+    enabled: false
