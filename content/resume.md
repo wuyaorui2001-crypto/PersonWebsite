@@ -120,15 +120,13 @@ sections_order:
 
 **软件**：Figma、SQL、Office、SPSS
 
----
+<!-- RESUME_LANG:en -->
 
 # English
 
 # Wu Yaorui
 
 13350089571 · wuyaorui2001@163.com
-
-<!-- RESUME_LANG:en -->
 
 ## Education
 

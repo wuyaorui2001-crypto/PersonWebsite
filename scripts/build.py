@@ -66,9 +66,10 @@ def split_resume(text: str) -> tuple[str, str, dict]:
         raise ValueError(f"resume.md 缺少 {ZH_MARKER} 或 {EN_MARKER}")
     before_zh, rest = body.split(ZH_MARKER, 1)
     zh_part, en_part = rest.split(EN_MARKER, 1)
+    # 兼容旧版：en 标记若在 English 标题之后，去掉 zh 段末尾误入的 English 头
+    zh_part = re.split(r"\n---\s*\n+\s*#\s*English\b", zh_part, maxsplit=1)[0].strip()
     zh_md = (before_zh.strip() + "\n\n" + zh_part.strip()).strip()
     en_md = en_part.strip()
-    # 去掉板块大标题，正文里保留姓名 h1
     zh_md = re.sub(r"^#\s*中文\s*\n+", "", zh_md, flags=re.MULTILINE)
     en_md = re.sub(r"^#\s*English\s*\n+", "", en_md, flags=re.MULTILINE)
     return md_to_html(zh_md), md_to_html(en_md), meta

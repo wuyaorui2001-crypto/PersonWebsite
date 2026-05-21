@@ -108,7 +108,7 @@ GitHub Pages 就是一堆网页文件，**完全可以**做成「栏目 / 子页
 | 项 | 说明 |
 |----|------|
 | 源文件 | **仅** `content/resume.md` |
-| 文件结构 | 上：`# 中文` + `<!-- RESUME_LANG:zh -->` 起为正文；下：`# English` + `<!-- RESUME_LANG:en -->` 起为正文 |
+| 文件结构 | 上：`# 中文` + `<!-- RESUME_LANG:zh -->` 至技能节末；下：`<!-- RESUME_LANG:en -->` 后接 `# English` 与英文正文 |
 | 维护习惯 | 新增一段实习/工作时，**紧挨着**在中英文两处各写一遍（结构对齐，方便对照） |
 | 入口 | 访客打开 `/resume/` 简历页 |
 | 按钮位置 | 页面固定：**右下角**（或左上/右上，实现时在 PRD 附录 C 与样式里二选一，默认右下） |
@@ -386,11 +386,12 @@ YAML frontmatter（name, headline, updated, changelog…）
 <!-- RESUME_LANG:zh -->
 ## 教育经历
 …
----
+## 技能
+…
+<!-- RESUME_LANG:en -->
 # English
 # Name
 contact
-<!-- RESUME_LANG:en -->
 ## Education
 …
 ```
