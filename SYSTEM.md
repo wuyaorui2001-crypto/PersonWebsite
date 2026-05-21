@@ -50,11 +50,19 @@
 - 简历页固定按钮切换中文 / English（见 PRD 6.1.2）
 - 构建时按 `<!-- RESUME_LANG:zh -->` / `<!-- RESUME_LANG:en -->` 从同一文件切出两段，由前端 JS 切换显示
 
-### 场景 C：同步 EP 文章
+### 场景 C：同步个人文章
 
 1. `python scripts/sync_articles.py`
 2. 检查 `content/articles/manifest.json`
-3. `python scripts/build.py`
+3. `python scripts/build.py`（**必须先 sync 再 build**，否则列表缺新篇）
+
+### 场景 F：Debug 全站检查
+
+```bash
+python scripts/debug_site.py
+```
+
+日志：`debug-c68ecd.log`（NDJSON）。通过后再 push。
 
 ### 场景 D：新增板块（如工作复盘）
 

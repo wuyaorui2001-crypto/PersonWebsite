@@ -1,6 +1,6 @@
 # PersonWebsite
 
-> 个人站点：简历 + 写作（EP 系列），静态构建，发布到 GitHub Pages。
+> 个人站点：简历 + 个人文章，静态构建，发布到 GitHub Pages。
 
 ---
 
@@ -62,7 +62,7 @@ python scripts/extract_resume.py
 
 生成对照文本；**网站展示**请编辑 `content/resume.md`（上中文 / 下 English，见 PRD 6.1）。
 
-### 2. 同步文章（EP 系列）
+### 2. 同步个人文章
 
 ```bash
 python scripts/sync_articles.py

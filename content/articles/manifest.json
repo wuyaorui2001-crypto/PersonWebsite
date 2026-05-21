@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-05-21T07:10:33.415956+00:00",
+  "synced_at": "2026-05-21T08:16:29.587731+00:00",
   "source_dir": "D:\\Me&AI\\Project\\thoughts\\Article",
   "articles": [
     {
@@ -25,6 +25,22 @@
       "display_title": "EP 003 | 生活",
       "source_file": "EP 003 生活.md",
       "content_path": "content/articles/ep-003-生活.md"
+    },
+    {
+      "slug": "ep-004-情绪（未完成）",
+      "ep": 4,
+      "title": "情绪（未完成）",
+      "display_title": "EP 004 | 情绪（未完成）",
+      "source_file": "EP 004 情绪（未完成）.md",
+      "content_path": "content/articles/ep-004-情绪（未完成）.md"
+    },
+    {
+      "slug": "ep-005-投资",
+      "ep": 5,
+      "title": "投资",
+      "display_title": "EP 005 | 投资",
+      "source_file": "EP 005 投资.md",
+      "content_path": "content/articles/ep-005-投资.md"
     }
   ]
 }

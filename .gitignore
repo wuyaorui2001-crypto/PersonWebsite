@@ -16,6 +16,9 @@ content/articles/.build-cache.json
 content/source/resume.pdf
 content/source/resume_extracted.txt
 
+# Debug 会话日志
+debug-c68ecd.log
+
 # OS
 .DS_Store
 Thumbs.db
