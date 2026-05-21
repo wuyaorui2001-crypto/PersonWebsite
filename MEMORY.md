@@ -35,4 +35,4 @@
 - [x] P2 site/ 视觉
 - [x] P3 sync（benchmark 未跑）
 - [x] P4 build.py
-- [ ] P5 gh repo + Pages 公网验证
+- [ ] P5 push + Pages（本地 git init/commit 完成；push 因网络待重试，见 DEPLOY.md）

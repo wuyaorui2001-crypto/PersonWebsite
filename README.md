@@ -73,7 +73,8 @@ python scripts/preview.py
 
 ### 4. 发布线上
 
-按 [`PRD.md` §6.4](PRD.md#64-发布到线上日常维护必记)：`git push` → GitHub Actions 部署 Pages。
+按 [`PRD.md` §6.4](PRD.md#64-发布到线上日常维护必记)：`git push` → GitHub Actions 部署 Pages。  
+**首次上线**步骤见 [`DEPLOY.md`](DEPLOY.md)。
 
 ---
 
