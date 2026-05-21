@@ -26,7 +26,8 @@ git push -u origin main
 
 1. 仓库 → **Settings** → **Pages**  
 2. **Build and deployment** → Source 选 **GitHub Actions**（不是 “Deploy from a branch”）  
-3. 首次 push 后，**Actions** 页应出现 **Deploy PersonWebsite** workflow
+3. 若第一次 Actions 在启用 Pages **之前**跑过且 `configure-pages` 失败：打开 [Actions](https://github.com/wuyaorui2001-crypto/PersonWebsite/actions) → 最新 **Deploy PersonWebsite** → **Re-run all jobs**，或再 `git push` 一次  
+4. 绿勾后访问下方公网地址
 
 ## 4. 验收
 
