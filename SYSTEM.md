@@ -9,7 +9,13 @@
 
 **PRD-first（强制）**：先读并更新 [`PRD.md`](PRD.md)，再改代码。Skill：`.cursor/skills/personwebsite-prd/SKILL.md`。
 
-**站长日常发布**：见 PRD **§6.4**（本地改 content → push → Actions → Pages）；下文 SOP 为命令级步骤。
+| 文档 | 读者 | 内容 |
+|------|------|------|
+| `PRD.md` 第一至七节 | 站长 | 产品、内容规则、发布 |
+| `PRD.md` **附录 D** | **Agent** | 路径地图、任务分类、不可违反约定 |
+| `SYSTEM.md` | Agent | 下面各场景的**命令** |
+
+**站长日常发布**：见 PRD **第六节 6.4**；Agent 场景表见 PRD **附录 D 的 D.3**。
 
 **这是什么**：个人品牌静态站 — 简历 + EP 文章，GitHub Pages 发布。
 
@@ -27,7 +33,7 @@
 
 ### 场景 A：用户更新简历 PDF
 
-1. 若结构变化 → **先更新 PRD.md §4.1**
+1. 若结构变化 → **先更新 PRD.md 第六节（简历）**
 2. 确认 `content/source/resume.pdf`
 3. `python scripts/extract_resume.py` → 查看 `resume_extracted.txt`
 4. 更新 `content/resume.md`（保留 frontmatter/changelog）；正式工作追加在 `## 工作经历` **顶部**

@@ -3,8 +3,9 @@
 | 项目 | 说明 |
 |------|------|
 | 产品名 | PersonWebsite（个人网站） |
-| 版本 | v0.4.2 |
+| 版本 | v0.5.1 |
 | 更新日期 | 2026-05-21 |
+| 读者 | 站长（你）+ 未来维护本项目的 Agent |
 | 负责人 | 吴垚枘 |
 | 线上地址 | https://wuyaorui2001-crypto.github.io/PersonWebsite/（上线后填写） |
 
@@ -12,20 +13,38 @@
 
 ## 一、这份文档是干什么的
 
-这是**个人网站**的产品说明。任何人（产品经理、未来的你自己、协作的 Agent）读完后，应能回答：
+这是**个人网站**的单一事实来源（SSOT）。读完后应能回答：
 
-1. 这个网站**给谁看、解决什么**  
-2. 页面上**有什么内容**  
-3. 内容**怎么更新**（简历、文章）  
-4. 改完后**怎么发布到线上**（本地 → GitHub → 公网）  
-5. 以后加新板块（比如「工作复盘」）**怎么走**  
-6. 什么叫**做完了**
+1. 网站**给谁看、解决什么**（第二至第四节）  
+2. 页面上**有什么、URL 是什么**（第五节）  
+3. 内容**怎么改**（第六节）  
+4. **怎么发布到线上**（第六节 6.4）  
+5. 加新板块**怎么走**（第六节 6.3 + 附录 D）  
+6. **什么叫做完**（第七节）  
 
-**维护规则（重要）**：  
-想法变了 → **先改本文档** → 再改网页代码或内容文件。  
-不要只改代码、不更新 PRD，否则半年后会对不上。
+> 下文用 **「第×节」** 指本文标题（如「## 二、…」= 第二节），不用 `§` 符号，避免误读为乱码。
 
-技术细节集中在**附录**，正文以产品和内容为主。
+### 给谁读、怎么读
+
+| 读者 | 建议阅读顺序 | 用途 |
+|------|----------------|------|
+| **你（站长）** | 第二节 → 第六节 → 6.4 → 第七节 | 日常改简历/文章、发布、验收 |
+| **Agent** | **附录 D（必读）** → 第六节 → 第五节 → `SYSTEM.md` | 改代码/配置/构建前对齐规则，避免破坏约定 |
+
+### 维护规则（人与 Agent 相同）
+
+```
+需求或规则变化 → 先改 PRD.md（+ 第十节变更记录）
+              → 若操作步骤变了，改 SYSTEM.md
+              → 再改 config / content / site / scripts
+              → 本地 build（+ 用户要求时 push）
+```
+
+- **不要**只改代码不更新 PRD。  
+- **不要**用 AI 改写 EP 文章或简历正文（除非用户明确要求润色）。  
+- 命令与逐步 SOP：**`SYSTEM.md`**；本 PRD 写**做什么、为什么、边界**。
+
+技术实现索引：附录 C（简表）、**附录 D（Agent 专用）**。
 
 ---
 
@@ -123,10 +142,12 @@ GitHub Pages 就是一堆网页文件，**完全可以**做成「栏目 / 子页
 
 | 问题 | 答案 |
 |------|------|
-| 写在哪 | thoughts 项目 `Article/` 下，`EP 001`、`EP 002`… |
-| 网站怎么用 | 运行同步脚本，复制到本站 `content/articles/` |
-| 会不会改我原文 | **不会**。网站展示与 thoughts 一致 |
-| 很多篇怎么办 | 列表分页；以后按约 **2000 篇** 规模设计加载方式，现在只有 3 篇 |
+| 写在哪 | thoughts 项目 `D:\Me&AI\Project\thoughts\Article\`，文件名 `EP 001 标题.md` |
+| 网站怎么用 | `python scripts/sync_articles.py` → 复制到 `content/articles/{slug}.md` |
+| 会不会改我原文 | **不会**。同步为复制；构建不调用 AI 改文 |
+| URL 规则 | 文件名 `EP 001 答案.md` → slug `ep-001-答案` → `/articles/ep-001-答案/` |
+| 很多篇怎么办 | 列表分页（每页 30，见 `config/sections.yaml`）；架构按约 **2000 篇** 预留 |
+| CI 注意 | GitHub Actions **没有** thoughts 仓库；**必须把** `content/articles/*.md` 提交进 PersonWebsite，线上才显示新文章 |
 
 ### 6.3 工作复盘（预留）
 
@@ -187,7 +208,7 @@ GitHub Pages 就是一堆网页文件，**完全可以**做成「栏目 / 子页
 | 3 | 可选本地 build + 预览 |
 | 4 | `git push` → 等 Actions → 打开公网链接验收 |
 
-技术命令与 Agent 步骤见 **`SYSTEM.md`**；本节只描述**你作为站长**的日常节奏。
+技术命令与逐步 SOP 见 **`SYSTEM.md`**。Agent 场景对照表见 **附录 D 的 D.3**。
 
 ---
 
@@ -223,17 +244,25 @@ GitHub Pages 就是一堆网页文件，**完全可以**做成「栏目 / 子页
 
 ---
 
-## 九、改需求时怎么走（给未来的你）
+## 九、改需求时怎么走
+
+**站长 / Agent 共用流程：**
 
 ```
 有新想法
-  → 打开 PRD.md，改对应章节（例如加「工作复盘」就改第五节、第六节）
-  → 在文末「变更记录」写一行
-  → 再让人 / Agent 改内容文件或网页
-  → 按 §6.4 预览（可选）后 push，等 Actions 上线
+  → 判断：只改正文？还是改规则/结构/页面？（见附录 D 的 D.3）
+  → 若改规则/结构：更新 PRD 对应章节 + 第十节变更记录 + 版本号
+  → 若 SOP/命令变化：更新 SYSTEM.md
+  → 实现（config / content / site / scripts）
+  → python scripts/build.py（文章变更前先 sync_articles.py）
+  → 用户要求发布时：git push → 等 Actions 绿勾 → 验收第六节 6.4
 ```
 
-Agent 在本项目工作时，需遵守：`.cursor/skills/personwebsite-prd/SKILL.md`。
+**Agent 额外约束**（细则在附录 D）：
+
+- 进入本项目先读：`.cursor/skills/personwebsite-prd/SKILL.md`  
+- **禁止**在未更新 PRD 的情况下新增路由、板块、改简历文件结构  
+- **禁止**提交 `content/source/resume.pdf`（已在 `.gitignore`）
 
 ---
 
@@ -247,7 +276,9 @@ Agent 在本项目工作时，需遵守：`.cursor/skills/personwebsite-prd/SKIL
 | v0.3.1 | 2026-05-21 | 简历拆为「工作经历（沉淀中）」+「实习经历」两节 |
 | v0.4 | 2026-05-21 | 简历页中英切换按钮（PRD 6.1.2） |
 | v0.4.1 | 2026-05-21 | 中英合并为单文件 `resume.md`（删除 resume.en.md） |
-| v0.4.2 | 2026-05-21 | 新增 §6.4「发布到线上」日常维护链路 |
+| v0.4.2 | 2026-05-21 | 新增 6.4「发布到线上」日常维护链路 |
+| v0.5 | 2026-05-21 | 新增附录 D「Agent 维护指南」；双读者说明；6.2 CI 与 slug 规则 |
+| v0.5.1 | 2026-05-21 | 交叉引用改为「第×节」，去掉 § 符号 |
 
 ---
 
@@ -270,12 +301,125 @@ Agent 在本项目工作时，需遵守：`.cursor/skills/personwebsite-prd/SKIL
 
 ---
 
-## 附录 C：研发实现摘要（需要时再看）
+## 附录 C：研发实现摘要
 
 | 项 | 说明 |
 |----|------|
 | 本地目录 | `D:\Me&AI\Project\PersonWebsite` |
-| 板块配置 | `config/sections.yaml` |
-| 构建输出 | `docs/` → GitHub Pages |
-| 脚本 | `sync_articles.py`、`build.py`、`extract_resume.py`（PDF 只生成对照文本，不覆盖 resume.md） |
-| 详细操作 | 见 `SYSTEM.md` |
+| 板块配置 | `config/sections.yaml`（`enabled` / `path` / `template`） |
+| 构建输出 | `docs/` → GitHub Pages；**勿手改** `docs/`，改 `site/` 或 `content/` 后重新 build |
+| 构建脚本 | `scripts/build.py`（读 yaml + resume 切分 + 文章 manifest/ glob） |
+| 同步脚本 | `scripts/sync_articles.py`（源：`thoughts/Article/EP *.md`） |
+| PDF | `extract_resume.py` → `resume_extracted.txt` only；**不覆盖** `resume.md` |
+| 预览 | `scripts/preview.py` → `http://127.0.0.1:8080/PersonWebsite/` |
+| 部署 | `.github/workflows/pages.yml`；首次 push 见 `DEPLOY.md` |
+| Agent 细则 | **附录 D**；逐步命令 **`SYSTEM.md`** |
+
+---
+
+## 附录 D：Agent 维护指南（必读）
+
+> 本节给 **Cursor / 其他 Agent**：用表格和路径减少猜测；与第六节、第九节、`SYSTEM.md`、`.cursor/skills/personwebsite-prd/SKILL.md` 一致。
+
+### D.1 启动清单（每次接任务先执行）
+
+1. 读 **PRD.md**（本文件）相关章节 + **附录 D 的 D.3** 判断任务类型。  
+2. 读 **`SYSTEM.md`** 对应场景（A–E）。  
+3. 读 **`config/sections.yaml`** 确认板块是否 `enabled`。  
+4. 若改 UI：读 **frontend-design** skill，Tone = **Editorial**（见附录 B）。  
+5. 改完后：`python scripts/build.py`；若动文章则先 `sync_articles.py`。  
+6. 更新 **`MEMORY.md`** 简短记录（用户未禁止时）。  
+7. **仅当用户明确要求** 时 `git commit` / `git push`。
+
+### D.2 仓库地图（SSOT 与路径）
+
+| 路径 | 类型 | 谁维护 | 说明 |
+|------|------|--------|------|
+| `PRD.md` | SSOT 产品 | 人 + Agent | 规则变必须先改 |
+| `SYSTEM.md` | SOP | Agent 为主 | 命令与步骤 |
+| `config/sections.yaml` | 配置 | Agent | 板块注册；与第五节 URL 一致 |
+| `content/resume.md` | 内容 | 人为主 | 简历展示源；中英单文件 |
+| `content/articles/*.md` | 内容 | sync 生成 | 从 thoughts 复制，需提交仓库 |
+| `content/source/resume.pdf` | 私有输入 | 人 | **gitignore**，不 push |
+| `site/templates/` | 模板 | Agent | HTML 骨架 |
+| `site/styles/` | 样式 | Agent | 改版主要改这里 |
+| `site/assets/scripts/resume-i18n.js` | 脚本 | Agent | 简历中英切换 |
+| `scripts/build.py` | 构建 | Agent | 生成 `docs/` |
+| `scripts/sync_articles.py` | 同步 | Agent | 拉 EP 文章 |
+| `docs/` | 构建产物 | build 生成 | CI 与本地 build 产出 |
+| `.cursor/skills/personwebsite-prd/` | Agent skill | Agent | PRD-first 流程 |
+
+### D.3 任务分类 → 必须动作
+
+| 用户意图 / 任务 | 先改 PRD？ | 主要改动 | 必跑命令 |
+|-----------------|------------|----------|----------|
+| 只改简历文字（无结构变化） | 否 | `content/resume.md` 中英两段 | `build.py` |
+| 简历增删章节、改中英结构 | **是** 第六节 6.1 | `resume.md` + 可能 `build.py` | `build.py` |
+| 新 EP / 改文章 | 否 | thoughts 原文 → sync | `sync_articles.py` → `build.py` |
+| 改分页、新板块、新 URL | **是** 第五节、6.3 | `sections.yaml` + 模板 + `build.py` | `build.py` |
+| 改视觉、排版 | 视情况 附录 B | `site/styles/`、`site/templates/` | `build.py` |
+| 发布线上 | 否 | — | 用户 `git push`；验 Actions |
+| 换 PDF 对照 | 否 | `content/source/resume.pdf` | `extract_resume.py`；**手工**合并进 MD |
+
+### D.4 不可违反的约定（Invariant）
+
+| # | 规则 |
+|---|------|
+| 1 | 简历展示源 **仅** `content/resume.md`；须含 `<!-- RESUME_LANG:zh -->` 与 `<!-- RESUME_LANG:en -->` |
+| 2 | 简历经历：**总述一句（无 bullet）+ 多条 `*` 分述**；数字结果 **加粗** |
+| 3 | `## 工作经历` 与 `## 实习经历` **分开**；暂无正式工作时中文「沉淀中」/ 英文 `In progress` |
+| 4 | 同步文章 **不修改** Markdown 正文；只复制文件 |
+| 5 | EP slug：`EP {n} {标题}.md` → `ep-{n:03d}-{标题无空格小写}`，例 `ep-001-答案` |
+| 6 | `base_url` 固定为 `/PersonWebsite/`（`sections.yaml`），所有站内链接需带此前缀 |
+| 7 | **不提交** `resume.pdf`；**不**让 build 用 AI 重写简历/文章 |
+| 8 | 新增板块：PRD 第五节、第六节 + `sections.yaml` `enabled: true` + `content/<板块>/` + 模板 |
+
+### D.5 简历文件结构（供解析）
+
+```text
+---
+YAML frontmatter（name, headline, updated, changelog…）
+---
+# 中文
+# 姓名
+联系方式
+<!-- RESUME_LANG:zh -->
+## 教育经历
+…
+---
+# English
+# Name
+contact
+<!-- RESUME_LANG:en -->
+## Education
+…
+```
+
+- `build.py` 在 marker 处切分；去掉 `# 中文` / `# English` 标题行后转 HTML。  
+- 改 UI 切换按钮：模板 `site/templates/resume.html` + `config/sections.yaml` 的 `i18n_*` 字段。
+
+### D.6 构建与部署（Agent 常错点）
+
+| 误解 | 事实 |
+|------|------|
+| push Markdown 即上网 | push 触发 **Actions** 跑 `build.py`，发布 **`docs/`** |
+| CI 会 sync thoughts | **不会**；须本地 `sync_articles.py` 后 **commit** `content/articles/` |
+| 改 `docs/*.html` 即可 | 下次 build **覆盖**；应改 `site/` 或 `content/` |
+| 预览路径根目录 | 本地：`http://127.0.0.1:8080/PersonWebsite/`（含 base_url） |
+
+### D.7 验收时对照第七节
+
+Agent 完成 UI/构建类任务后，核对：
+
+- [ ] 首页、简历（中英切换）、文章列表、至少 1 篇详情可访问  
+- [ ] 简历 HTML 符合总-分；加粗数字保留  
+- [ ] `build.py` 退出码 0；无破坏 `RESUME_LANG` marker  
+- [ ] 若用户要上线：提醒第六节 6.4 / `DEPLOY.md`，不擅自 force push  
+
+### D.8 与 `personwebsite-prd` skill 的关系
+
+- **PRD（本文件）**：产品与规则 SSOT，含附录 D。  
+- **skill**：强制「先 PRD 后代码」的执行顺序与检查清单。  
+- **SYSTEM.md**：可复制粘贴的命令级 SOP。  
+
+三者冲突时：**PRD > SYSTEM > skill 示例**；有歧义时问用户并更新第十节变更记录。

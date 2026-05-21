@@ -22,6 +22,11 @@
 - 简历：按「总-分」重写，非 PDF 直贴；量化结果 **加粗**
 - 美团/得物：多方向用小标题 + 总 + 分
 
+## 2026-05-21 PRD v0.5 Agent 可读
+
+- PRD 附录 D：Agent 维护指南（启动清单、仓库地图、任务分类、Invariant、构建常错点）
+- 第一节双读者阅读顺序；skill / SYSTEM 指向附录 D；v0.5.1 去掉 § 交叉引用
+
 ## 2026-05-21 P2–P4 站点构建
 
 - P2：`site/styles`（Editorial）、`templates/`、`resume-i18n.js`

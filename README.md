@@ -29,10 +29,18 @@ cat SYSTEM.md
 
 ---
 
+## 文档（人与 Agent）
+
+| 文件 | 给谁 |
+|------|------|
+| [`PRD.md`](PRD.md) | 产品与内容规则（站长第一至七节；**Agent 附录 D**） |
+| [`SYSTEM.md`](SYSTEM.md) | Agent 命令级 SOP |
+| [`DEPLOY.md`](DEPLOY.md) | 首次 push / Pages |
+
 ## 日常维护（站长）
 
 改内容 → `git push` → GitHub Actions 构建 `docs/` → GitHub Pages 更新。  
-分场景步骤与检查清单见 **[`PRD.md` 第六节 §6.4](PRD.md#64-发布到线上日常维护必记)**。
+分场景见 **[PRD 第六节 6.4](PRD.md#64-发布到线上日常维护必记)**。
 
 ---
 
@@ -73,7 +81,7 @@ python scripts/preview.py
 
 ### 4. 发布线上
 
-按 [`PRD.md` §6.4](PRD.md#64-发布到线上日常维护必记)：`git push` → GitHub Actions 部署 Pages。  
+按 [`PRD.md` 第六节 6.4](PRD.md#64-发布到线上日常维护必记)：`git push` → GitHub Actions 部署 Pages。  
 **首次上线**步骤见 [`DEPLOY.md`](DEPLOY.md)。
 
 ---

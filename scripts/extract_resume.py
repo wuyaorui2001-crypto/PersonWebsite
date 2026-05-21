@@ -32,7 +32,7 @@ def main() -> int:
     text = "\n".join(parts).strip()
     OUT_TXT.write_text(text, encoding="utf-8")
     print(f"[OK] 已写入 {OUT_TXT} ({len(text)} 字符)")
-    print("[INFO] 请对照抽取文本更新 content/resume.md，或让 Agent 按 PRD §4.1 结构化")
+    print("[INFO] 请对照抽取文本更新 content/resume.md，或让 Agent 按 PRD 第六节结构化")
     return 0
 
 

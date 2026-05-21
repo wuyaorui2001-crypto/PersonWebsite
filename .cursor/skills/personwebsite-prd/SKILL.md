@@ -19,17 +19,18 @@ description: PersonWebsite 项目 PRD-first 工作流。任何功能、结构、
 ## 强制顺序
 
 ```
-1. 阅读 PRD.md（项目根）
-2. 确认变更属于哪一章 → 更新 PRD.md + PRD 变更记录表
-3. 若 SOP 变化 → 更新 SYSTEM.md
-4. 实现代码 / config / content 结构
-5. 更新 MEMORY.md（完成复盘）
-6. build / 用户要求时 push
+1. 阅读 PRD.md（项目根）— Agent 必读附录 D
+2. 用 PRD 附录 D 的 D.3 判断任务类型（是否要先改 PRD）
+3. 确认变更属于哪一章 → 更新 PRD.md + 第十节变更记录 + 版本号
+4. 若 SOP 变化 → 更新 SYSTEM.md
+5. 实现代码 / config / content 结构
+6. 更新 MEMORY.md（完成复盘）
+7. sync（若文章）→ build.py；用户要求时 push
 ```
 
 ## PRD 位置
 
-- **SSOT**：[`PRD.md`](../../PRD.md)（相对 skill：`PersonWebsite/PRD.md`）
+- **SSOT**：[`PRD.md`](../../PRD.md) — 站长第一至七节；**Agent 必读附录 D**
 - **操作指南**：[`SYSTEM.md`](../../SYSTEM.md)
 - **板块注册**：[`config/sections.yaml`](../../config/sections.yaml)
 
@@ -43,7 +44,7 @@ description: PersonWebsite 项目 PRD-first 工作流。任何功能、结构、
 - `## 工作经历`：正式工作；暂无内容时写「沉淀中」
 - `## 实习经历`：实习内容，与工作经历分开
 - 中英：同一 `resume.md`，`RESUME_LANG:zh` / `RESUME_LANG:en` 两段；新增经历时中英一起改
-- 发布：PRD §6.4 — 本地改 content → push → Actions build → Pages；细节命令见 SYSTEM.md
+- 发布：PRD 第六节 6.4 — 本地改 content → push → Actions build → Pages；细节命令见 SYSTEM.md
 - PDF 仅作对照：`extract_resume.py` → `resume_extracted.txt`，需理解结构后写入 MD
 
 ## 与外部 PRD skill 的关系
@@ -53,7 +54,9 @@ description: PersonWebsite 项目 PRD-first 工作流。任何功能、结构、
 
 ## 检查清单（每次改功能前）
 
-- [ ] PRD.md 已更新版本与 §10 变更记录
-- [ ] 验收标准在 PRD §8 可对应
-- [ ] sections.yaml 与 PRD §3 一致
+- [ ] 已读 PRD **附录 D 的 D.3**，确认任务分类
+- [ ] PRD.md 已更新版本与第十节变更记录（若改规则/结构）
+- [ ] 验收可对照 PRD 第七节 + 附录 D 的 D.7
+- [ ] `sections.yaml` 与 PRD 第五节一致
 - [ ] 未在 PRD 未记录的情况下新增路由或板块
+- [ ] 新 EP 已 sync 且 `content/articles/*.md` 将随 commit 提交（CI 无 thoughts）
