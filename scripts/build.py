@@ -184,8 +184,8 @@ def build_resume(cfg: dict, layout: str, resume_tpl: str) -> None:
     )
     html = render_page(
         layout,
-        title="简历",
-        description=f"{owner} — 简历",
+        title="个人简历",
+        description="个人简历",
         content=content,
         base_url=site["base_url"],
         site_title=site["title"],
@@ -202,11 +202,9 @@ def article_list_items(articles: list[dict], base_url: str) -> str:
     for a in articles:
         slug = a["slug"]
         title = a.get("display_title", slug)
-        ep = a.get("ep", 0)
         rows.append(
             f'<li><a href="{base_url}articles/{slug}/">'
-            f'<span class="ep-num">EP {ep:03d}</span>'
-            f'<span class="ep-title">{title}</span></a></li>'
+            f'<span class="article-list-title">{title}</span></a></li>'
         )
     return "\n".join(rows) if rows else "<li>暂无文章，请先运行 sync_articles.py</li>"
 
@@ -256,8 +254,8 @@ def build_articles(cfg: dict, layout: str, list_tpl: str, detail_tpl: str) -> No
         content = fill(list_tpl, article_items=items, pagination=pag)
         html = render_page(
             layout,
-            title="文章",
-            description="EP 系列文章",
+            title="个人文章",
+            description="个人文章",
             content=content,
             base_url=base_url,
             site_title=site["title"],
@@ -281,7 +279,6 @@ def build_articles(cfg: dict, layout: str, list_tpl: str, detail_tpl: str) -> No
         content = fill(
             detail_tpl,
             article_title=display,
-            article_meta=f"EP {a.get('ep', 0):03d}",
             article_body=article_html,
         )
         html = render_page(

@@ -45,25 +45,7 @@ img {
   max-width: var(--page-max);
   margin: 0 auto;
   padding: var(--space-md) var(--space-md) var(--space-sm);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--space-sm);
   border-bottom: 1px solid var(--color-border);
-}
-
-.site-brand {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--color-text);
-  text-decoration: none;
-}
-
-.site-brand:hover {
-  color: var(--color-accent);
 }
 
 .site-nav {
@@ -292,9 +274,7 @@ img {
 }
 
 .article-list a {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--space-md);
+  display: block;
   padding: var(--space-md) 0;
   text-decoration: none;
   color: inherit;
@@ -306,14 +286,7 @@ img {
   color: inherit;
 }
 
-.article-list .ep-num {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--color-accent);
-  letter-spacing: 0.06em;
-}
-
-.article-list .ep-title {
+.article-list .article-list-title {
   font-family: var(--font-display);
   font-size: 1.2rem;
 }
