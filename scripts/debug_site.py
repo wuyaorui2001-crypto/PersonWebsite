@@ -99,17 +99,18 @@ def check_base_url() -> bool:
 
 
 def check_article_layout_css() -> bool:
-    """H6: 文章详情列宽居中，避免正文贴左、右侧大块空白"""
-    css = (SITE_STYLES).read_text(encoding="utf-8")
-    ok = (
-        "article:not(.resume-page)" in css
-        and "margin-inline: auto" in css
+    """H6: 文章详情与简历同宽（无 42rem 窄栏限制）"""
+    css = SITE_STYLES.read_text(encoding="utf-8")
+    narrow = re.search(
+        r"article:not\(\.resume-page\)\s*\{[^}]*max-width:\s*var\(--content-max\)",
+        css,
     )
+    ok = narrow is None
     log(
         "H6",
         "debug_site.py:check_article_layout_css",
-        "article column centering rule",
-        {"ok": ok},
+        "article full-width like resume",
+        {"ok": ok, "narrow_rule": bool(narrow)},
     )
     return ok
 
@@ -135,7 +136,7 @@ def main() -> int:
         ("H2/H3 文章 manifest=构建页数", check_articles_sync_build()),
         ("H5 base_url 链接", check_base_url()),
         ("H4 文档 EP 系列 用语", check_doc_drift()),
-        ("H6 文章详情列居中", check_article_layout_css()),
+        ("H6 文章详情铺满（同简历）", check_article_layout_css()),
     ]
     failed = [name for name, ok in checks if not ok]
     log("SUMMARY", "debug_site.py:main", "run complete", {"failed": failed, "passed": len(checks) - len(failed)})

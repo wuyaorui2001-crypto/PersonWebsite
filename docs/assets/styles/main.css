@@ -308,13 +308,7 @@ img {
   color: var(--color-accent);
 }
 
-/* —— Article detail —— */
-.site-main > article:not(.resume-page) {
-  max-width: var(--content-max);
-  margin-inline: auto;
-  width: 100%;
-}
-
+/* —— Article detail（宽度与简历页一致，铺满 site-main）—— */
 .article-header {
   margin-bottom: var(--space-lg);
 }
@@ -336,7 +330,8 @@ img {
   font-size: var(--article-size);
   line-height: var(--article-leading);
   letter-spacing: var(--article-tracking);
-  color: var(--article-color);
+  color: var(--color-text);
+  max-width: none;
 }
 
 .article-body p {
