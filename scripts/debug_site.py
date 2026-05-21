@@ -12,6 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 LOG_PATH = ROOT / "debug-c68ecd.log"
+SITE_STYLES = ROOT / "site" / "styles" / "main.css"
 RESUME_HTML = ROOT / "docs" / "resume" / "index.html"
 RESUME_MD = ROOT / "content" / "resume.md"
 MANIFEST = ROOT / "content" / "articles" / "manifest.json"
@@ -97,6 +98,22 @@ def check_base_url() -> bool:
     return ok
 
 
+def check_article_layout_css() -> bool:
+    """H6: 文章详情列宽居中，避免正文贴左、右侧大块空白"""
+    css = (SITE_STYLES).read_text(encoding="utf-8")
+    ok = (
+        "article:not(.resume-page)" in css
+        and "margin-inline: auto" in css
+    )
+    log(
+        "H6",
+        "debug_site.py:check_article_layout_css",
+        "article column centering rule",
+        {"ok": ok},
+    )
+    return ok
+
+
 def check_doc_drift() -> bool:
     """H4: PRD/README 仍写 EP 系列（与 UI 个人文章不一致）"""
     drift = []
@@ -118,6 +135,7 @@ def main() -> int:
         ("H2/H3 文章 manifest=构建页数", check_articles_sync_build()),
         ("H5 base_url 链接", check_base_url()),
         ("H4 文档 EP 系列 用语", check_doc_drift()),
+        ("H6 文章详情列居中", check_article_layout_css()),
     ]
     failed = [name for name, ok in checks if not ok]
     log("SUMMARY", "debug_site.py:main", "run complete", {"failed": failed, "passed": len(checks) - len(failed)})

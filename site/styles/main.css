@@ -309,6 +309,12 @@ img {
 }
 
 /* —— Article detail —— */
+.site-main > article:not(.resume-page) {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  width: 100%;
+}
+
 .article-header {
   margin-bottom: var(--space-lg);
 }
@@ -327,7 +333,6 @@ img {
 }
 
 .article-body {
-  max-width: var(--content-max);
   font-size: var(--article-size);
   line-height: var(--article-leading);
   letter-spacing: var(--article-tracking);
