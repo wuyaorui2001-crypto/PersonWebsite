@@ -136,13 +136,15 @@ sections_order:
 
 **Sep 2023 – Jun 2026**
 
+GPA: 3.6 / 4.0
+
 Core courses: human-centered product design, advanced psychological statistics, consumer psychology, UX and usability research methods
 
 ### Beijing Forestry University · Applied Psychology · B.A. · Full-time
 
 **Sep 2019 – Jun 2023**
 
-GPA: **91.57** / 100
+GPA: 91.57 / 100
 
 Core courses: advanced mathematics, linear algebra, psychological statistics, psychometrics, managerial psychology, human resource management
 
